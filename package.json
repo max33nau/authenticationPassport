@@ -1,0 +1,35 @@
+{
+  "name": "single_source_authentication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max33nau/authenticationPassport.git"
+  },
+  "author": "Max Jacobsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/max33nau/authenticationPassport/issues"
+  },
+  "homepage": "https://github.com/max33nau/authenticationPassport#readme",
+  "devDependencies": {
+    "body-parser": "^1.14.2",
+    "chai": "^3.4.1",
+    "chai-http": "^1.0.0",
+    "express": "^4.13.4",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "mocha": "^2.4.1",
+    "mongoose": "^4.3.7"
+  }
+}
