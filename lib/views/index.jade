@@ -3,6 +3,7 @@ html
   head
     title home
   body(style='text-align: center')
+    block content
     header
       h1 Welcome to this awesome home page glad you registered
     p(style='color: blue').
@@ -15,10 +16,10 @@ html
       input(type='submit'  value='Search')
       br
       br
-    block content
       h4= error
       p You are currently signed in as :  
         span(style='color:red; font-weight: bolder')= username
+      a(href='/home')= home
     br
     a(href='/logout') Log Out
     footer
