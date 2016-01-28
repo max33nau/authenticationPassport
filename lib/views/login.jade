@@ -3,10 +3,14 @@ html
   head
     title Login
   body(style='text-align: center')
+    block content
     header
-      h1 Please enter your username and password to log in:
+      h1 Log In
+      p=notAuthorized
+      p=message
     br
     br
+    p Please enter your username and password to log in:
     form(method='POST')
       div Username:
         input(name='username')
