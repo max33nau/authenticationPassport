@@ -26,21 +26,19 @@ describe('Test passport authentication', function () {
     chaiRequest = chai.request(app);
   });
 
-  // it('should render the login page with a message saying you cannot log in until you have signed in or up', function (done) {
-  //   chaiRequest.get('/home')
-  //     .then(function (response) {
-  //       console.log(response);
-  //       expect(response).to.have.status(200);
-  //       done();
-  //     })
-  //     .catch(done);
-  // });
+  it('should render the not authorized page with a message saying you cannot log in until you have signed in or up', function (done) {
+    chaiRequest.get('/home')
+      .then(function (response) {
+        expect(response).to.have.status(200);
+        done();
+      })
+      .catch(done);
+  });
 
   it('should register a new user named john with password abc and redirect you to login page', function (done) {
     chaiRequest.post('/register')
       .send({"newusername": "john", "newpassword": "abc", "confirmpassword":"abc"})
       .then(function (response) {
-    //    console.log(response);
         expect(response).to.have.status(200);
         done();
       })
@@ -51,7 +49,6 @@ describe('Test passport authentication', function () {
     chaiRequest.post('/login')
       .send({"username": "john", "password": "abc"})
       .then(function (response) {
-        console.log(response);
         expect(response).to.have.status(200);
         done();
       })
