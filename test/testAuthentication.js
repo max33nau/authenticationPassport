@@ -29,6 +29,8 @@ describe('Test passport authentication', function () {
   it('should render the not authorized page with a message saying you cannot log in until you have signed in or up', function (done) {
     chaiRequest.get('/home')
       .then(function (response) {
+        var notAuthorized = response.text.search('Not Authorized')
+        expect(notAuthorized).to.not.equal(-1); // would equal negative 1 if the word was not found
         expect(response).to.have.status(200);
         done();
       })
