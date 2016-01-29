@@ -38,20 +38,28 @@ describe('Test passport authentication', function () {
   });
 
   it('should register a new user named john with password abc and redirect you to login page', function (done) {
-    chaiRequest.post('/register')
-      .send({"newusername": "john", "newpassword": "abc", "confirmpassword":"abc"})
+    chai.request.agent(app).post('/register')
+      .send({"username": "john", "newpassword": "abc", "password":"abc"})
       .then(function (response) {
         expect(response).to.have.status(200);
+        console.log(response.text);
+        var notAuthorized = response.text.search('Not Authorized')
+        expect(notAuthorized).to.deep.equal(-1); // this wont exist if the login passes
+        return chai.request.agent(app).get('/logout');
+      })
+      .then(function(response){
         done();
       })
       .catch(done);
   });
 
   it('should sign you into the home page allowing you access', function (done) {
-    chaiRequest.post('/login')
+    chai.request.agent(app).post('/login')
       .send({"username": "john", "password": "abc"})
       .then(function (response) {
         expect(response).to.have.status(200);
+        var notAuthorized = response.text.search('Not Authorized')
+        expect(notAuthorized).to.deep.equal(-1); // this wont exist if the login passes
         done();
       })
       .catch(done);
